@@ -1,25 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from "react";
+import Board from "./components/Board";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="text-center text-3xl font-bold mb-4">Battle of Signs</h1>
+      <Board />
     </div>
   );
-}
+};
 
 export default App;
