@@ -19,13 +19,13 @@ const Board = () => {
   } = useGameBoard();
 
   return (
-    <div className="relative bg-wood-pattern mx-auto max-w-max p-4">
+    <div className="relative bg-wood-pattern mx-auto max-w-max p-2">
       <div className="grid grid-cols-7 grid-rows-7 gap-1">
         {board.map((row, rowIndex) =>
           row.map((cell, colIndex) => (
             <div
               key={`${rowIndex}-${colIndex}`}
-              className={`relative w-16 h-16 border rounded-full flex items-center justify-center bg-wood-pattern ${
+              className={`relative w-14 h-14 border rounded-full flex items-center justify-center bg-wood-pattern ${
                 selectedBattlePositions.player &&
                 selectedBattlePositions.player.rowIndex === rowIndex &&
                 selectedBattlePositions.player.colIndex === colIndex
@@ -49,7 +49,7 @@ const Board = () => {
         )}
       </div>
 
-      <div className="mt-4 text-center">
+      <div className="mt-2 text-center">
         <p className="mb-2">Current Player: {currentPlayer}</p>
         <div className="flex justify-center">
           <button
