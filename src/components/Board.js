@@ -1,5 +1,5 @@
 // Board.js
-import React, { useState } from "react";
+import React from "react";
 import Coin from "./Coin";
 import { useGameBoard } from "../hooks/useGameBoard";
 
