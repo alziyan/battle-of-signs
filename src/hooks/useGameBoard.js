@@ -1,4 +1,3 @@
-// useGameBoard.js
 import { useState } from "react";
 
 export const useGameBoard = () => {
@@ -21,7 +20,7 @@ export const useGameBoard = () => {
 
   const handleCellClick = (rowIndex, colIndex) => {
     if (!signSelected || board[rowIndex][colIndex] !== null || battleMode) {
-      return; // Cell is already filled or sign is not selected or battle mode is on
+      return;
     }
 
     const newBoard = board.map((row, rIndex) =>
@@ -38,7 +37,7 @@ export const useGameBoard = () => {
 
     setBoard(newBoard);
     setCurrentPlayer(currentPlayer === "red" ? "blue" : "red"); // Toggle players
-    setSignSelected(false); // Reset sign selection after placing coin
+    setSignSelected(false); // Reset sign
   };
 
   const handleBattleCellClick = (rowIndex, colIndex) => {
@@ -105,21 +104,35 @@ export const useGameBoard = () => {
 
     if (newDiceResult.red !== null && newDiceResult.blue !== null) {
       // Determine the winner
-      const winner = newDiceResult.red > newDiceResult.blue ? "red" : "blue";
+      const winner = newDiceResult.red >= newDiceResult.blue ? "red" : "blue";
 
-      // Alert with dice results and winner
       alert(
         `Red Player Dice: ${newDiceResult.red}\nBlue Player Dice: ${
           newDiceResult.blue
         }\nPlayer ${winner.toUpperCase()} wins the battle!`
       );
 
-      // Update board with battle result
+      // Update board
       const { player: playerPos, opponent: opponentPos } =
         selectedBattlePositions;
 
       const winningSign = players[winner].sign;
       const winningColor = players[winner].color;
+
+      // const newBoard = board.map((row, rIndex) =>
+      //   row.map((cell, cIndex) => {
+      //     if (
+      //       rIndex === opponentPos.rowIndex &&
+      //       cIndex === opponentPos.colIndex
+      //     ) {
+      //       return { sign: winningSign, color: winningColor };
+      //     }
+      //     if (rIndex === playerPos.rowIndex && cIndex === playerPos.colIndex) {
+      //       return { sign: winningSign, color: winningColor };
+      //     }
+      //     return cell;
+      //   })
+      // );
 
       const newBoard = board.map((row, rIndex) =>
         row.map((cell, cIndex) => {

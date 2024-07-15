@@ -29,11 +29,11 @@ const Board = () => {
                 selectedBattlePositions.player &&
                 selectedBattlePositions.player.rowIndex === rowIndex &&
                 selectedBattlePositions.player.colIndex === colIndex
-                  ? "border-4 border-yellow-500"
+                  ? "border-4 border-black"
                   : selectedBattlePositions.opponent &&
                     selectedBattlePositions.opponent.rowIndex === rowIndex &&
                     selectedBattlePositions.opponent.colIndex === colIndex
-                  ? "border-4 border-yellow-500"
+                  ? "border-4 border-black"
                   : ""
               }`}
               onClick={() =>
@@ -43,6 +43,8 @@ const Board = () => {
               }
             >
               {cell ? <Coin sign={cell.sign} color={cell.color} /> : null}
+              {/* {<Coin sign={cell.sign} color={cell.color} /> : null} */}
+
               <div className="absolute inset-0 border border-dashed rounded-full"></div>
             </div>
           ))
@@ -52,7 +54,7 @@ const Board = () => {
       <div className="mt-2 text-center">
         <p className="mb-2">Current Player: {currentPlayer}</p>
         <div className="flex justify-center">
-          <button
+          {/* <button
             className={`mr-2 w-12 h-12 rounded-full flex items-center justify-center ${
               currentPlayer === "red"
                 ? `bg-red-500 text-white ${
@@ -81,12 +83,35 @@ const Board = () => {
             disabled={signSelected || battleMode}
           >
             -
+          </button> */}
+
+          <button
+            className={`mr-2 w-12 h-12 rounded-full flex items-center justify-center ${
+              currentPlayer === "red"
+                ? `bg-red-500 text-white ${signSelected ? "" : ""}`
+                : `bg-blue-500 text-white ${signSelected ? "" : ""}`
+            } text-2xl`}
+            onClick={() => handleSignSelect("+")}
+            disabled={signSelected || battleMode}
+          >
+            +
+          </button>
+          <button
+            className={`w-12 h-12 rounded-full flex items-center justify-center ${
+              currentPlayer === "red"
+                ? `bg-red-500 text-white ${signSelected ? "" : ""}`
+                : `bg-blue-500 text-white ${signSelected ? "" : ""}`
+            } text-2xl`}
+            onClick={() => handleSignSelect("-")}
+            disabled={signSelected || battleMode}
+          >
+            -
           </button>
         </div>
 
         <div className="mt-4">
           <button
-            className="px-4 py-2 bg-yellow-500 text-white rounded"
+            className="px-4 py-2 bg-gray-800 text-white rounded"
             onClick={handleBattleClick}
             disabled={battleMode}
           >
